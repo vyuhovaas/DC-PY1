@@ -18,7 +18,21 @@ main_str = """
 """
 print(get_count_char(main_str))
 
-#не уверена в выполнении 5 пункта, при проверке не выводилось процентное соотношение
 
 
+def percent_letter(percent_str):
+    percent_str = "".join(percent_str.lower())
+    percent_dict = {}
+    for letter in percent_str:
+        if letter.isalpha():
+            if letter in percent_dict:
+                percent_dict[letter] += 1
+            else:
+                percent_dict[letter] = 1
+    total_count = sum(percent_dict.values())
+    for word, val in percent_dict.items():
+        percent_dict[word] = round(val / total_count * 100, 1)
+    return percent_dict
 
+
+print(percent_letter(main_str))
